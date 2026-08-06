@@ -1,0 +1,20 @@
+from Crypto.Cipher import AES
+
+key = b'1234567890123456'
+iv = b'abcdefghijklmnop'
+
+cipher = AES.new(key, AES.MODE_CBC, iv)
+
+message = b"Hello AES"
+
+# BUG: Message not padded
+ciphertext = cipher.encrypt(message)
+
+print(ciphertext)
+
+cipher2 = AES.new(key, AES.MODE_CBC)
+
+# BUG: Missing IV during decryption
+plaintext = cipher2.decrypt(ciphertext)
+
+print(plaintext)
