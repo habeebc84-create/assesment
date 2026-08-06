@@ -1,0 +1,17 @@
+def point_add(P, Q):
+    x = P[0] + Q[0]
+    y = P[1] + Q[1]
+    return (x, y)
+
+def scalar_mult(k, P):
+    result = P
+
+    # BUG: Incorrect scalar multiplication
+    for i in range(k):
+        result = point_add(result, P)
+
+    return result
+
+P = (3, 6)
+
+print(scalar_mult(5, P))
