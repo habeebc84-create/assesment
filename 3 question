@@ -1,0 +1,18 @@
+p = 17
+q = 19
+
+n = p * q
+
+e = 7
+
+# BUG: Incorrect private key
+d = 5
+
+message = 200
+
+cipher = pow(message, e, n)
+
+plain = pow(cipher, d, n)
+
+print("Cipher:", cipher)
+print("Plain:", plain)
